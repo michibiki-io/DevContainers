@@ -1,0 +1,9 @@
+FROM michibiki/devcontainer:golang-1.19.5-bullseye
+
+# install nodejs
+RUN apt-get update && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get -y install nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* && \
+    npm install -g yarn

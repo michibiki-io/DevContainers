@@ -1,0 +1,17 @@
+FROM michibiki/devcontainer:golang-1.19.5-bullseye
+
+# VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
+ARG VARIANT=hugo_extended
+
+# VERSION can be either 'latest' or a specific version number
+ARG VERSION=latest
+
+# install Hugo
+RUN case ${VERSION} in \
+    latest) \
+    export VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep "tag_name" | awk '{print substr($2, 3, length($2)-4)}') ;;\
+    esac && \
+    echo ${VERSION} && \
+    wget -O ${VERSION}.tar.gz https://github.com/gohugoio/hugo/releases/download/v${VERSION}/${VARIANT}_${VERSION}_Linux-64bit.tar.gz && \
+    tar xf ${VERSION}.tar.gz && \
+    mv hugo* /usr/bin/hugo

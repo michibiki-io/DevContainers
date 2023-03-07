@@ -1,0 +1,15 @@
+FROM michibiki/devcontainer:hugo-0.110.0-bullseye
+
+# VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
+ARG VARIANT=hugo_extended
+
+# VERSION can be either 'latest' or a specific version number
+ARG VERSION=latest
+
+# install nodejs
+RUN apt-get update && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get -y install nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* && \
+    npm install -g yarn
