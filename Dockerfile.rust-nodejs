@@ -1,4 +1,4 @@
-FROM michibiki/devcontainer:golang-1.23-bullseye
+FROM michibiki/devcontainer:rust-1.82-bullseye
 
 # install nodejs
 RUN apt-get update && \

@@ -1,4 +1,4 @@
-FROM michibiki/devcontainer:golang-1.19.5-bullseye
+FROM michibiki/devcontainer:golang-1.23-bullseye
 
 # VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
 ARG VARIANT=hugo_extended

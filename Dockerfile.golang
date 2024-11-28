@@ -1,4 +1,4 @@
-FROM golang:1.19.5-bullseye
+FROM golang:1.23-bullseye
 
 RUN apt-get update && \
     apt-get -y install git gosu wget ca-certificates && \
